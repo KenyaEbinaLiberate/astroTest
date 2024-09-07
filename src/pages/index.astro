@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const selectedWorks = [
+  { title: 'JP Startups', slug: 'jp-startup' },
+  { title: 'HP Music School', slug: 'hpmusic-school' },
+  { title: 'Denkikogyo', slug: 'dkk' },
+  { title: 'FDM', slug: 'fdm' },
+  { title: 'Mijikana', slug: 'mijikana' },
+  { title: 'Next Stage', slug: 'nextstage' },
+  {
+    title: 'MKTG Sports + Entertainment',
+    slug: 'mktgse',
+  },
+  { title: 'KTRZ Monokai', slug: 'ktrz-monokai' },
+  { title: 'Dentsu Sports International', slug: 'dentsusports' },
+  { title: 'KTRZ FONT', slug: 'ktrz-font' },
+  {
+    title: 'KATSURAGAWA LADIES’ CLINIC',
+    slug: 'katsuragawa',
+  },
+  { title: 'Kitahama Partners', slug: 'kitahama' },
+  { title: 'LOK', slug: 'lok' },
+  {
+    title: 'FRANCFRANC BRAND IDENTITY GUIDELINES',
+    slug: 'francfranc',
+  },
+  { title: 'QUATRO PHOTO DESIGN', slug: 'quatro-photodesign' },
+];
+---
+
+<Layout title="Kite">
+  <div
+    class="fixed inset-x-0 bottom-[calc(max(4vw,3rem)*2)] z-bg grid h-[calc(max(4vw,3rem)*4)] origin-left animate-[loading-1_1s_both] place-items-center overflow-hidden animation-ease-in-expo"
+  >
+    <figure
+      class="h-px w-full animate-[loading-2_1s_1s_both] overflow-hidden animation-ease-in-quart"
+    >
+      <div
+        class="animate-[stretch-animation_var(--duration,150s)_1.8s_linear_infinite]"
+        style={`--duration: ${selectedWorks.length * 10}s;`}
+      >
+        {
+          selectedWorks.map(({ slug }) => {
+            return (
+              <img
+                class="w-full"
+                src={`/images/works/${slug}.jpg`}
+                decoding="async"
+                alt=""
+                width="1920"
+                height="1080"
+              />
+            );
+          })
+        }
+      </div>
+    </figure>
+  </div>
+  <main
+    class="grid gap-4 pt-[max((100vh-max(4vw,3rem)*8.5-2rem),16rem)] text-white"
+  >
+    <div
+      class="fixed grid w-full grid-cols-3 mix-blend-difference lg:grid-cols-6"
+    >
+      <p class="col-start-3 lg:col-start-6">Scroll</p>
+    </div>
+    <h2 class="ml-4 mix-blend-difference">Selected Works</h2>
+    <div
+      class="overflow-hidden whitespace-nowrap text-[max(4vw,3rem)] font-normal leading-none"
+    >
+      <ul>
+        {
+          selectedWorks.map(({ title, slug }, i, { length }) => {
+            return (
+              <li class="overflow-x-auto scrollbar-none">
+                <a
+                  href={`/works/${slug}/`}
+                  class="peer flex w-fit animate-[slide-up_1s_var(--delay)_both] gap-4 overflow-hidden px-4 mix-blend-difference transition animation-ease-out-circ hover:text-[#f00]"
+                  style={`--delay: ${i * 0.1 + 1.9}s;`}
+                >
+                  <h3>{title}</h3>
+                  <p class="text-base font-medium">
+                    {i + 1}/{length}
+                  </p>
+                </a>
+                <div class="invisible fixed inset-x-0 bottom-[calc(max(4vw,3rem)*2)] z-bg-active grid h-[calc(max(4vw,3rem)*4)] origin-left place-items-center overflow-hidden opacity-0 transition duration-300 peer-hover:visible peer-hover:opacity-100">
+                  <figure class="h-px w-full scale-y-[409.6] overflow-hidden">
+                    <div class="animate-[stretch-animation_10s_1.8s_linear_infinite]">
+                      <img
+                        class="w-full"
+                        src={`/images/works/${slug}.jpg`}
+                        decoding="async"
+                        alt=""
+                        width="1920"
+                        height="1080"
+                      />
+                    </div>
+                  </figure>
+                </div>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <div class="overflow-hidden">
+        <a
+          href="/works/"
+          class="block animate-[slide-up_1s_var(--delay)_both] px-4 mix-blend-difference transition animation-ease-in-out hover:text-[#f00]"
+          style={`--delay: ${selectedWorks.length * 0.05 + 1.7}s;`}
+          >See All Projects</a
+        >
+      </div>
+    </div>
+    <div
+      class="flex min-h-screen items-end px-4 pb-[calc(max(4vw,3rem)*2)] pt-16"
+    >
+      <p class="flex h-[calc(max(4vw,3rem)*4)] items-center">
+        <a
+          class="text-[max(10vw,4rem)] font-normal leading-none mix-blend-difference transition hover:text-[#f00] lg:font-light"
+          href="/contact/">Have A Plan? Let’s make it happen!</a
+        >
+      </p>
+    </div>
+  </main>
+</Layout>
