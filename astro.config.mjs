@@ -5,5 +5,4 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   scopedStyleStrategy: 'class',
   integrations: [tailwind()],
-  base: '/astro',
 });
